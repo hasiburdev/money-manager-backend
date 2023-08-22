@@ -1,6 +1,5 @@
 "use client";
 
-import { createSwaggerSpec } from "next-swagger-doc";
 import "swagger-ui-react/swagger-ui.css";
 import SwaggerUI from "swagger-ui-react";
 const Docs = () => {
