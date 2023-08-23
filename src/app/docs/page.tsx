@@ -1,11 +1,13 @@
 "use client";
 
-import "swagger-ui-react/swagger-ui.css";
 import SwaggerUI from "swagger-ui-react";
+import "swagger-ui-react/swagger-ui.css";
+import { docsData } from "./swagger";
+
 const Docs = () => {
   return (
     <div>
-      <SwaggerUI url="https://petstore.swagger.io/v2/swagger.json" />
+      <SwaggerUI spec={docsData} />
     </div>
   );
 };
