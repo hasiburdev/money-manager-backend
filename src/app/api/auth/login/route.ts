@@ -16,9 +16,11 @@ export const POST = async (req: NextRequest, res: NextResponse) => {
     try {
       const dbUser = await loginUser(userInput.email, userInput.password);
       const cookie = await addTokenInCookie(userInput.email);
+
       return NextResponse.json(
         {
           message: "Login Successful!",
+          data: dbUser,
         },
         {
           status: 200,
