@@ -1,3 +1,3 @@
-export interface RecordType {
+export interface Record {
   title: string;
 }
