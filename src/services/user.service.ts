@@ -1,6 +1,5 @@
 import { connectDB } from "@/app/lib/connect-db";
 import { CreateUser } from "@/interfaces/user";
-// import { UserModel } from "@/models";
 import { UserModel } from "@/models";
 
 export const createUser = async (user: CreateUser) => {
@@ -18,8 +17,18 @@ export const createUser = async (user: CreateUser) => {
   }
 };
 
-// export const loginUser = async (user) => {
-//   try {
-//     await connectDB();
-//   } catch (error) {}
-// };
+export const loginUser = async (email: string, password: string) => {
+  try {
+    await connectDB();
+    const dbUser = await UserModel.findOne({ email });
+    if (dbUser) {
+      if (dbUser.email === email && dbUser.password === password) {
+        return dbUser;
+      } else {
+        throw new Error("Mismatch!");
+      }
+    } else {
+      throw new Error("No user found!");
+    }
+  } catch (error) {}
+};
