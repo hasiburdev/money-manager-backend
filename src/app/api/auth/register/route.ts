@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 import {
   UserRegistrationSchema,
   UserRegistrationSchemaType,
-} from "@/validators/user-registration.validator";
+} from "@/validators/registration.validator";
 
 export const POST = async (req: Request, res: Response) => {
   const body = await req.json();
@@ -52,18 +52,6 @@ export const POST = async (req: Request, res: Response) => {
   }
 };
 
-export async function OPTIONS(request: Request) {
-  const allowedOrigin = request.headers.get("origin");
-  const response = new NextResponse(null, {
-    status: 200,
-    headers: {
-      "Access-Control-Allow-Origin": allowedOrigin || "*",
-      "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
-      "Access-Control-Allow-Headers":
-        "Content-Type, Authorization, X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Date, X-Api-Version",
-      "Access-Control-Max-Age": "86400",
-    },
-  });
-
-  return response;
-}
+export const OPTIONS = () => {
+  return NextResponse.json({}, { status: 200 });
+};

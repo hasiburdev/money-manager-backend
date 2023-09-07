@@ -1,4 +1,4 @@
-import { connectDB } from "@/app/lib/connect-db";
+import { connectDB } from "@/lib/connect-db";
 import { RecordModel } from "../models/record.model";
 export const getAllRecords = async (record: any) => {
   await connectDB();

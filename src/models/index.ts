@@ -1,9 +1,5 @@
-import { NODE_ENV } from "@/app/lib/env";
-import { model } from "mongoose";
-import { userSchema } from "./user.model";
+import { Model, model, models } from "mongoose";
+import { UserSchemaType, userSchema } from "./user.model";
 
-if (NODE_ENV === "development") {
-  // @ts-ignore
-  mongoose.models = {};
-}
-export const UserModel = model("user", userSchema);
+export const UserModel = (models.user ||
+  model("user", userSchema)) as Model<UserSchemaType>;
