@@ -1,4 +1,3 @@
-import { connectDB } from "@/lib/connect-db";
 import { NextResponse } from "next/server";
 
 export const GET = async (req: Request, res: Response) => {};
@@ -9,8 +8,6 @@ export const POST = async (req: Request, res: Response) => {
   const amount = body["amount"];
   const uid = body["uid"];
   const currency = body["currency"];
-
-  //   if()
 
   try {
   } catch (error) {

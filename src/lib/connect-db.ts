@@ -1,7 +1,5 @@
-// lib/dbConnect.tsx
-
 import _mongoose, { connect } from "mongoose";
-import { MONGODB_URI } from "./env";
+import { Env } from "./env";
 
 declare global {
   var mongoose: {
@@ -9,14 +7,6 @@ declare global {
     conn: typeof _mongoose | null;
   };
 }
-
-// const MONGODB_URI = process.env.MONGODB_URI;
-
-// if (!MONGODB_URI) {
-//   throw new Error(
-//     "Please define the MONGODB_URI environment variable inside .env.local"
-//   );
-// }
 
 /**
  * Global is used here to maintain a cached connection across hot reloads
@@ -41,7 +31,7 @@ export const connectDB = async () => {
       bufferCommands: false,
     };
 
-    cached.promise = connect(MONGODB_URI!, opts).then((mongoose) => {
+    cached.promise = connect(Env.MONGODB_URI!, opts).then((mongoose) => {
       console.log("Connected to DB!");
       return mongoose;
     });
