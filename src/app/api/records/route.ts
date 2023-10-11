@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 
 export const GET = async (req: Request, res: Response) => {};
 
-export const POST = async (req: Request, res: Response) => {
+export const POST = async (req: Request, _res: Response) => {
   const body = await req.json();
 
   const amount = body["amount"];
@@ -18,7 +18,7 @@ export const POST = async (req: Request, res: Response) => {
           code: "INTERNAL_SERVER_ERROR",
         },
       },
-      { status: 500 }
+      { status: 500 },
     );
   }
 };

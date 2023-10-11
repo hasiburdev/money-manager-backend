@@ -2,7 +2,7 @@ import bcrypt from "bcrypt";
 import { Env } from "./env";
 
 export const hashPassword = (password: string) => {
-  return bcrypt.hash(password, Env.BCRYPT_SALT_ROUND);
+  return bcrypt.hash(password, 10);
 };
 
 export const comparePassword = (password: string, hashedPassword: string) => {
